@@ -9,14 +9,33 @@
 #endif
 
 #include <stdio.h>
+#include <iostream>
 
 #include "PosixTestClient.h"
+
+#include "TwsWatcher.h"
 
 const unsigned MAX_ATTEMPTS = 1;
 const unsigned SLEEP_TIME = 10;
 
-int main(int argc, char** argv)
+using namespace std;
+
+using namespace TwsApp;
+
+int main(int argc, const char** argv)
 {
+  int result = TwsWatcher::AppMain(argc, argv);
+
+  if (result != 0)
+    {
+      cout << endl << "TwsWatcher returned: " << result << endl;
+    }
+
+  return result;
+}
+
+#if 0
+  
 	const char* host = argc > 1 ? argv[1] : "";
 	unsigned int port = argc > 2 ? atoi(argv[2]) : 7496;
 	int clientId = 0;
@@ -45,5 +64,5 @@ int main(int argc, char** argv)
 	}
 
 	printf ( "End of POSIX Socket Client Test\n");
-}
 
+#endif // 0
