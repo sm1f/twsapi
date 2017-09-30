@@ -4,20 +4,20 @@ AM_LDFLAGS =
 
 
 noinst_PROGRAMS =
-noinst_PROGRAMS += TestPosixSocketClient
-TestPosixSocketClient_SOURCES =
-TestPosixSocketClient_SOURCES += PosixTestClient.cpp
-TestPosixSocketClient_SOURCES += Main.cpp
+noinst_PROGRAMS += TwsWatcher
+TwsWatcher_SOURCES =
+TwsWatcher_SOURCES += PosixTestClient.cpp
+TwsWatcher_SOURCES += Main.cpp
 noinst_HEADERS =
 noinst_HEADERS += PosixTestClient.h
-EXTRA_TestPosixSocketClient_SOURCES =
-TestPosixSocketClient_LDADD =
-TestPosixSocketClient_LDADD += $(top_builddir)/PosixSocketClient/libtwsapi.la
-TestPosixSocketClient_CPPFLAGS =
-TestPosixSocketClient_CPPFLAGS += $(AM_CPPFLAGS)
-TestPosixSocketClient_CPPFLAGS += -I$(top_srcdir)/PosixSocketClient/src
-TestPosixSocketClient_CPPFLAGS += -I$(top_srcdir)/Shared
-TestPosixSocketClient_LDFLAGS = $(AM_LDFLAGS)
+EXTRA_TwsWatcher_SOURCES =
+TwsWatcher_LDADD =
+TwsWatcher_LDADD += $(top_builddir)/PosixSocketClient/libtwsapi.la
+TwsWatcher_CPPFLAGS =
+TwsWatcher_CPPFLAGS += $(AM_CPPFLAGS)
+TwsWatcher_CPPFLAGS += -I$(top_srcdir)/PosixSocketClient/src
+TwsWatcher_CPPFLAGS += -I$(top_srcdir)/Shared
+TwsWatcher_LDFLAGS = $(AM_LDFLAGS)
 
 CLEANFILES =
 CLEANFILES += *.s
