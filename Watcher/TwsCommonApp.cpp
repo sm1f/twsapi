@@ -44,8 +44,6 @@ int TwsCommonApp::RunMain()
   
   cout << "NYI RunMain" << endl;
 
-  //  DumpArgs("Dumping Args:");
-  
   return 0;
 }
 
