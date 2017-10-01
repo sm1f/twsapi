@@ -9,11 +9,17 @@ namespace TwsApp {
 
 class TwsCommonApp
 {
+ private:
+  int iArgCount;
+  const char** asArgs;
+
   
  public:
-  virtual int AppMain(int iArgCount, const char** asArgs);
+  TwsCommonApp(int iArgCount, const char** asArgs);
+  
+  virtual int RunMain();
 
-  virtual void DumpArgs(const char* title, int iArgCount, const char** asArgs);
+  virtual void DumpArgs(const char* title);
 
   
 };

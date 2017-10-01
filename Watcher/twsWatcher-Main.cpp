@@ -24,7 +24,10 @@ using namespace TwsApp;
 
 int main(int argc, const char** argv)
 {
-  int result = TwsWatcher::StaticMain(argc, argv);
+  TwsWatcher that(argc, argv);
+  //  that.SetGeneralDebugLevel(100);
+
+  int result = that.RunMain();
 
   if (result != 0)
     {

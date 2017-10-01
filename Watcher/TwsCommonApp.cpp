@@ -6,20 +6,28 @@
 using namespace std;
 using namespace TwsApp;
 
-
-int TwsCommonApp::AppMain(int iArgCount, const char** asArgs)
+TwsCommonApp::TwsCommonApp(int iArgCountIn, const char** asArgsIn)
+  : iArgCount(iArgCountIn), asArgs(asArgsIn)
 {
-  DumpArgs(NULL, iArgCount, asArgs);
+}
+
+
+int TwsCommonApp::RunMain()
+{
+  cout << "NYI RunMain" << endl;
+
+  DumpArgs("Dumping Args:");
+  
   return 0;
 }
 
-void TwsCommonApp::DumpArgs(const char* sTitle, int iArgCount, const char** asArgs)
+void TwsCommonApp::DumpArgs(const char* sTitle)
 {
   if (sTitle != NULL) {
     cout << "" << sTitle << endl;
   }
   for (int i = 0; i < iArgCount; i++) {
-    cout << "Arg [" << i << "]" << asArgs[i] << endl;
+        cout << "Arg [" << i << "]" << asArgs[i] << endl;
   }
 }
 

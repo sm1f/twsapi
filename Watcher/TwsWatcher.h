@@ -11,10 +11,7 @@ class TwsWatcher : public TwsCommonApp
 {
 
  public:
-  static int StaticMain(int iArgCount, const char** asArgs);
-
-
-  virtual int AppMain(int iArgCount, const char** asArgs);
+  TwsWatcher(int iArgCount, const char** asArgs);
 };
 
 
