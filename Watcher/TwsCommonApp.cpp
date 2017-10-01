@@ -6,22 +6,20 @@
 using namespace std;
 using namespace TwsApp;
 
-TwsCommonApp::TwsCommonApp(int iArgCountIn, const char** asArgsIn)
+/** CommandLineDatum *************************/
+CommandLineDatum::CommandLineDatum()
+{
+}
+
+
+/** CommandLineData *************************/
+
+CommandLineData::CommandLineData(int iArgCountIn, const char** asArgsIn)
   : iArgCount(iArgCountIn), asArgs(asArgsIn)
 {
 }
 
-
-int TwsCommonApp::RunMain()
-{
-  cout << "NYI RunMain" << endl;
-
-  DumpArgs("Dumping Args:");
-  
-  return 0;
-}
-
-void TwsCommonApp::DumpArgs(const char* sTitle)
+void CommandLineData::DumpArgs(const char* sTitle)
 {
   if (sTitle != NULL) {
     cout << "" << sTitle << endl;
@@ -29,5 +27,25 @@ void TwsCommonApp::DumpArgs(const char* sTitle)
   for (int i = 0; i < iArgCount; i++) {
         cout << "Arg [" << i << "]" << asArgs[i] << endl;
   }
+}
+
+
+
+/** TwsCommonApp ****************************/
+  
+TwsCommonApp::TwsCommonApp(int iArgCount, const char** asArgs)
+  : oCommandLineData(iArgCount, asArgs)
+{
+}
+
+
+int TwsCommonApp::RunMain()
+{
+  
+  cout << "NYI RunMain" << endl;
+
+  //  DumpArgs("Dumping Args:");
+  
+  return 0;
 }
 
