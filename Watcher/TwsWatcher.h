@@ -3,13 +3,18 @@
 #ifndef __TWS_WATCHER_H__
 #define  __TWS_WATCHER_H__
 
+#include "TwsCommonApp.h"
+
 namespace TwsApp {
 
-class TwsWatcher
+class TwsWatcher : public TwsCommonApp
 {
 
  public:
-  static int AppMain(int iArgCount, const char** asArgs);
+  static int StaticMain(int iArgCount, const char** asArgs);
+
+
+  virtual int AppMain(int iArgCount, const char** asArgs);
 };
 
 
