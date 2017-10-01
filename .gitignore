@@ -1,3 +1,7 @@
+## generated executables
+twsWatcher
+
+
 .gitignore
 *~
 *.o
@@ -7,12 +11,12 @@
 *.kdevelop
 *.kdevelop.pcs
 *.kdevses
-Makefile
 Doxyfile
 TestPosixSocketClient/TestPosixSocketClient
 
 
 ## autotools
+Makefile.am
 Makefile.in
 aclocal.m4
 autom4te.cache

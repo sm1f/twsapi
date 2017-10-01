@@ -3,7 +3,7 @@ LC_ALL = C
 
 ACLOCAL_AMFLAGS = -I m4
 
-SUBDIRS = PosixSocketClient TestPosixSocketClient
+SUBDIRS = PosixSocketClient TestPosixSocketClient Watcher
 
 nodist_header_HEADERS =
 nodist_header_HEADERS += twsapi_config.h
