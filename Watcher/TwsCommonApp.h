@@ -3,12 +3,15 @@
 #ifndef __TWS_COMMON_APP__
 #define __TWS_COMMON_APP__
 
+#include <iostream>
+#include <map>
 #include <string>
 #include <vector>
-#include <map>
 
 #define NYI(text) { cout << "NYI: " << text << endl; }
-#define IGNORE(var) { if (false) cout << "" << var; }
+//#define NFI(text) { cout << "NFI: " << text << endl; }
+
+#define NFI(text) {}
 
 namespace TwsApp {
 
@@ -32,13 +35,17 @@ class CommandLineInt : public CommandLineDatum
   CommandLineInt(MyString sShort, MyString sFull, int* piVar);
 };
 
+typedef std::map<MyString, CommandLineDatumPtr> Name2CLDatumMap;
+ 
 class CommandLineData
 {
  private:
+  int iDebug;
   int iArgCount;
   const char** asArgs;
   std::vector<CommandLineDatumPtr> vArgData;
-  std::map<MyString, CommandLineDatumPtr> mShortName2Datum;
+  Name2CLDatumMap mShortName2Datum;
+  Name2CLDatumMap mFullName2Datum;
   
   
  public:
@@ -48,6 +55,8 @@ class CommandLineData
 
   void DumpArgs(MyString title);
   void DumpData(MyString title);
+
+  void DB(int iLevel, MyString text);
 };
 
 

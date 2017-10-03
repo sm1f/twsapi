@@ -1,0 +1,180 @@
+
+steve@beast:~/projects/2017/broom/twsapi/twsapi/Watcher$ mm
+rm -f twsWatcher-Main.o PosixTestClient.o TwsCommonApp.o ClientConnection.o TwsWatcher.o twsWatcher-Main.d PosixTestClient.d TwsCommonApp.d ClientConnection.d TwsWatcher.d twsWatcher
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o twsWatcher-Main.o twsWatcher-Main.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o PosixTestClient.o PosixTestClient.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o TwsWatcher.o TwsWatcher.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o TwsCommonApp.o TwsCommonApp.cpp
+TwsCommonApp.cpp: In member function ‘void TwsApp::CommandLineData::DumpData(TwsApp::MyString)’:
+TwsCommonApp.cpp:60:39: error: ‘Map’ was not declared in this scope
+   for (Name2CLDatumMap::iterator it = Map.begin(); it != Map.end(); ++it)
+                                       ^
+TwsCommonApp.cpp:62:19: error: ‘DB’ was not declared in this scope
+       DB(1, "here");
+                   ^
+<builtin>: recipe for target 'TwsCommonApp.o' failed
+make: *** [TwsCommonApp.o] Error 1
+bash: ./twsWatcher: No such file or directory
+steve@beast:~/projects/2017/broom/twsapi/twsapi/Watcher$ mm
+rm -f twsWatcher-Main.o PosixTestClient.o TwsCommonApp.o ClientConnection.o TwsWatcher.o twsWatcher-Main.d PosixTestClient.d TwsCommonApp.d ClientConnection.d TwsWatcher.d twsWatcher
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o twsWatcher-Main.o twsWatcher-Main.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o PosixTestClient.o PosixTestClient.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o TwsWatcher.o TwsWatcher.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o TwsCommonApp.o TwsCommonApp.cpp
+TwsCommonApp.cpp: In member function ‘void TwsApp::CommandLineData::DumpData(TwsApp::MyString)’:
+TwsCommonApp.cpp:62:19: error: ‘DB’ was not declared in this scope
+       DB(1, "here");
+                   ^
+<builtin>: recipe for target 'TwsCommonApp.o' failed
+make: *** [TwsCommonApp.o] Error 1
+bash: ./twsWatcher: No such file or directory
+steve@beast:~/projects/2017/broom/twsapi/twsapi/Watcher$ mm
+rm -f twsWatcher-Main.o PosixTestClient.o TwsCommonApp.o ClientConnection.o TwsWatcher.o twsWatcher-Main.d PosixTestClient.d TwsCommonApp.d ClientConnection.d TwsWatcher.d twsWatcher
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o twsWatcher-Main.o twsWatcher-Main.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o PosixTestClient.o PosixTestClient.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o TwsWatcher.o TwsWatcher.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o TwsCommonApp.o TwsCommonApp.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o ClientConnection.o ClientConnection.cpp
+/bin/bash ../libtool  --tag=CXX   --mode=link g++ -Wall -Wextra -g -O2   -o twsWatcher twsWatcher-Main.o PosixTestClient.o TwsWatcher.o TwsCommonApp.o ClientConnection.o ../PosixSocketClient/libtwsapi.la 	
+libtool: link: g++ -Wall -Wextra -g -O2 -o twsWatcher twsWatcher-Main.o PosixTestClient.o TwsWatcher.o TwsCommonApp.o ClientConnection.o  ../PosixSocketClient/.libs/libtwsapi.a
+NYI: CommandLineData::AddIntArg(const char* name, Int* pInt)
+NYI: TwsCommonApp::AddCommonCommandLineArgs()
+NYI: TwsWatcher.RunMain
+NYI: ClientConnection::TryConnecting(unsigned uiAttempts)
+Error: TwsWatcher: connection failed
+steve@beast:~/projects/2017/broom/twsapi/twsapi/Watcher$ mm
+rm -f twsWatcher-Main.o PosixTestClient.o TwsCommonApp.o ClientConnection.o TwsWatcher.o twsWatcher-Main.d PosixTestClient.d TwsCommonApp.d ClientConnection.d TwsWatcher.d twsWatcher
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o twsWatcher-Main.o twsWatcher-Main.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o PosixTestClient.o PosixTestClient.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o TwsWatcher.o TwsWatcher.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o TwsCommonApp.o TwsCommonApp.cpp
+TwsCommonApp.cpp: In member function ‘virtual void TwsApp::CommandLineData::AddIntArg(const char*, const char*, int*)’:
+TwsCommonApp.cpp:36:1: error: expected unqualified-id before ‘}’ token
+ }
+ ^
+<builtin>: recipe for target 'TwsCommonApp.o' failed
+make: *** [TwsCommonApp.o] Error 1
+bash: ./twsWatcher: No such file or directory
+steve@beast:~/projects/2017/broom/twsapi/twsapi/Watcher$ mm
+rm -f twsWatcher-Main.o PosixTestClient.o TwsCommonApp.o ClientConnection.o TwsWatcher.o twsWatcher-Main.d PosixTestClient.d TwsCommonApp.d ClientConnection.d TwsWatcher.d twsWatcher
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o twsWatcher-Main.o twsWatcher-Main.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o PosixTestClient.o PosixTestClient.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o TwsWatcher.o TwsWatcher.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o TwsCommonApp.o TwsCommonApp.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o ClientConnection.o ClientConnection.cpp
+/bin/bash ../libtool  --tag=CXX   --mode=link g++ -Wall -Wextra -g -O2   -o twsWatcher twsWatcher-Main.o PosixTestClient.o TwsWatcher.o TwsCommonApp.o ClientConnection.o ../PosixSocketClient/libtwsapi.la 	
+libtool: link: g++ -Wall -Wextra -g -O2 -o twsWatcher twsWatcher-Main.o PosixTestClient.o TwsWatcher.o TwsCommonApp.o ClientConnection.o  ../PosixSocketClient/.libs/libtwsapi.a
+NYI: CommandLineData::AddIntArg(const char* name, Int* pInt)
+NYI: TwsCommonApp::AddCommonCommandLineArgs()
+NYI: TwsWatcher.RunMain
+NYI: ClientConnection::TryConnecting(unsigned uiAttempts)
+Error: TwsWatcher: connection failed
+steve@beast:~/projects/2017/broom/twsapi/twsapi/Watcher$ mm
+rm -f twsWatcher-Main.o PosixTestClient.o TwsCommonApp.o ClientConnection.o TwsWatcher.o twsWatcher-Main.d PosixTestClient.d TwsCommonApp.d ClientConnection.d TwsWatcher.d twsWatcher
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o twsWatcher-Main.o twsWatcher-Main.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o PosixTestClient.o PosixTestClient.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o TwsWatcher.o TwsWatcher.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o TwsCommonApp.o TwsCommonApp.cpp
+TwsCommonApp.cpp: In member function ‘virtual void TwsApp::CommandLineData::AddIntArg(const char*, const char*, int*)’:
+TwsCommonApp.cpp:33:72: error: conversion from ‘TwsApp::CommandLineInt*’ to non-scalar type ‘TwsApp::CommandLineInt’ requested
+   CommandLineInt that = new CommandLineInt(sShortName, sFullName, piInt);
+                                                                        ^
+TwsCommonApp.cpp:34:26: error: no matching function for call to ‘std::vector<TwsApp::CommandLineDatum*>::push_back(TwsApp::CommandLineInt&)’
+   vArgData.push_back(that);
+                          ^
+In file included from /usr/include/c++/5/vector:64:0,
+                 from TwsCommonApp.h:9,
+                 from TwsCommonApp.cpp:4:
+/usr/include/c++/5/bits/stl_vector.h:913:7: note: candidate: void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = TwsApp::CommandLineDatum*; _Alloc = std::allocator<TwsApp::CommandLineDatum*>; std::vector<_Tp, _Alloc>::value_type = TwsApp::CommandLineDatum*]
+       push_back(const value_type& __x)
+       ^
+/usr/include/c++/5/bits/stl_vector.h:913:7: note:   no known conversion for argument 1 from ‘TwsApp::CommandLineInt’ to ‘TwsApp::CommandLineDatum* const&’
+TwsCommonApp.cpp:36:32: error: cannot convert ‘TwsApp::CommandLineInt’ to ‘std::map<const char*, TwsApp::CommandLineDatum*>::mapped_type {aka TwsApp::CommandLineDatum*}’ in assignment
+   mShortName2Datum[sShortName] = that;
+                                ^
+<builtin>: recipe for target 'TwsCommonApp.o' failed
+make: *** [TwsCommonApp.o] Error 1
+bash: ./twsWatcher: No such file or directory
+steve@beast:~/projects/2017/broom/twsapi/twsapi/Watcher$ mm
+rm -f twsWatcher-Main.o PosixTestClient.o TwsCommonApp.o ClientConnection.o TwsWatcher.o twsWatcher-Main.d PosixTestClient.d TwsCommonApp.d ClientConnection.d TwsWatcher.d twsWatcher
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o twsWatcher-Main.o twsWatcher-Main.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o PosixTestClient.o PosixTestClient.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o TwsWatcher.o TwsWatcher.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o TwsCommonApp.o TwsCommonApp.cpp
+TwsCommonApp.cpp: In member function ‘virtual void TwsApp::CommandLineData::AddIntArg(const char*, const char*, int*)’:
+TwsCommonApp.cpp:33:72: error: conversion from ‘TwsApp::CommandLineInt*’ to non-scalar type ‘TwsApp::CommandLineInt’ requested
+   CommandLineInt that = new CommandLineInt(sShortName, sFullName, piInt);
+                                                                        ^
+TwsCommonApp.cpp:34:26: error: no matching function for call to ‘std::vector<TwsApp::CommandLineDatum*>::push_back(TwsApp::CommandLineInt&)’
+   vArgData.push_back(that);
+                          ^
+In file included from /usr/include/c++/5/vector:64:0,
+                 from TwsCommonApp.h:9,
+                 from TwsCommonApp.cpp:4:
+/usr/include/c++/5/bits/stl_vector.h:913:7: note: candidate: void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = TwsApp::CommandLineDatum*; _Alloc = std::allocator<TwsApp::CommandLineDatum*>; std::vector<_Tp, _Alloc>::value_type = TwsApp::CommandLineDatum*]
+       push_back(const value_type& __x)
+       ^
+/usr/include/c++/5/bits/stl_vector.h:913:7: note:   no known conversion for argument 1 from ‘TwsApp::CommandLineInt’ to ‘TwsApp::CommandLineDatum* const&’
+<builtin>: recipe for target 'TwsCommonApp.o' failed
+make: *** [TwsCommonApp.o] Error 1
+bash: ./twsWatcher: No such file or directory
+steve@beast:~/projects/2017/broom/twsapi/twsapi/Watcher$ mm
+rm -f twsWatcher-Main.o PosixTestClient.o TwsCommonApp.o ClientConnection.o TwsWatcher.o twsWatcher-Main.d PosixTestClient.d TwsCommonApp.d ClientConnection.d TwsWatcher.d twsWatcher
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o twsWatcher-Main.o twsWatcher-Main.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o PosixTestClient.o PosixTestClient.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o TwsWatcher.o TwsWatcher.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o TwsCommonApp.o TwsCommonApp.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o ClientConnection.o ClientConnection.cpp
+/bin/bash ../libtool  --tag=CXX   --mode=link g++ -Wall -Wextra -g -O2   -o twsWatcher twsWatcher-Main.o PosixTestClient.o TwsWatcher.o TwsCommonApp.o ClientConnection.o ../PosixSocketClient/libtwsapi.la 	
+libtool: link: g++ -Wall -Wextra -g -O2 -o twsWatcher twsWatcher-Main.o PosixTestClient.o TwsWatcher.o TwsCommonApp.o ClientConnection.o  ../PosixSocketClient/.libs/libtwsapi.a
+NYI: CommandLineData::AddIntArg(const char* name, Int* pInt)
+NYI: TwsCommonApp::AddCommonCommandLineArgs()
+NYI: TwsWatcher.RunMain
+NYI: ClientConnection::TryConnecting(unsigned uiAttempts)
+Error: TwsWatcher: connection failed
+steve@beast:~/projects/2017/broom/twsapi/twsapi/Watcher$ mm
+rm -f twsWatcher-Main.o PosixTestClient.o TwsCommonApp.o ClientConnection.o TwsWatcher.o twsWatcher-Main.d PosixTestClient.d TwsCommonApp.d ClientConnection.d TwsWatcher.d twsWatcher
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o twsWatcher-Main.o twsWatcher-Main.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o PosixTestClient.o PosixTestClient.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o TwsWatcher.o TwsWatcher.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o TwsCommonApp.o TwsCommonApp.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o ClientConnection.o ClientConnection.cpp
+/bin/bash ../libtool  --tag=CXX   --mode=link g++ -Wall -Wextra -g -O2   -o twsWatcher twsWatcher-Main.o PosixTestClient.o TwsWatcher.o TwsCommonApp.o ClientConnection.o ../PosixSocketClient/libtwsapi.la 	
+libtool: link: g++ -Wall -Wextra -g -O2 -o twsWatcher twsWatcher-Main.o PosixTestClient.o TwsWatcher.o TwsCommonApp.o ClientConnection.o  ../PosixSocketClient/.libs/libtwsapi.a
+NYI: CommandLineData::AddIntArg(const char* name, Int* pInt)
+NYI: TwsCommonApp::AddCommonCommandLineArgs()
+NYI: TwsWatcher.RunMain
+NYI: ClientConnection::TryConnecting(unsigned uiAttempts)
+Error: TwsWatcher: connection failed
+steve@beast:~/projects/2017/broom/twsapi/twsapi/Watcher$ mm
+rm -f twsWatcher-Main.o PosixTestClient.o TwsCommonApp.o ClientConnection.o TwsWatcher.o twsWatcher-Main.d PosixTestClient.d TwsCommonApp.d ClientConnection.d TwsWatcher.d twsWatcher
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o twsWatcher-Main.o twsWatcher-Main.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o PosixTestClient.o PosixTestClient.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o TwsWatcher.o TwsWatcher.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o TwsCommonApp.o TwsCommonApp.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o ClientConnection.o ClientConnection.cpp
+/bin/bash ../libtool  --tag=CXX   --mode=link g++ -Wall -Wextra -g -O2   -o twsWatcher twsWatcher-Main.o PosixTestClient.o TwsWatcher.o TwsCommonApp.o ClientConnection.o ../PosixSocketClient/libtwsapi.la 	
+libtool: link: g++ -Wall -Wextra -g -O2 -o twsWatcher twsWatcher-Main.o PosixTestClient.o TwsWatcher.o TwsCommonApp.o ClientConnection.o  ../PosixSocketClient/.libs/libtwsapi.a
+NYI: CommandLineData::AddIntArg(const char* name, Int* pInt)
+NYI: TwsCommonApp::AddCommonCommandLineArgs()
+NYI: TwsWatcher.RunMain
+NYI: ClientConnection::TryConnecting(unsigned uiAttempts)
+Error: TwsWatcher: connection failed
+steve@beast:~/projects/2017/broom/twsapi/twsapi/Watcher$ mm
+rm -f twsWatcher-Main.o PosixTestClient.o TwsCommonApp.o ClientConnection.o TwsWatcher.o twsWatcher-Main.d PosixTestClient.d TwsCommonApp.d ClientConnection.d TwsWatcher.d twsWatcher
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o twsWatcher-Main.o twsWatcher-Main.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o PosixTestClient.o PosixTestClient.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o TwsWatcher.o TwsWatcher.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o TwsCommonApp.o TwsCommonApp.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o ClientConnection.o ClientConnection.cpp
+/bin/bash ../libtool  --tag=CXX   --mode=link g++ -Wall -Wextra -g -O2   -o twsWatcher twsWatcher-Main.o PosixTestClient.o TwsWatcher.o TwsCommonApp.o ClientConnection.o ../PosixSocketClient/libtwsapi.la 	
+libtool: link: g++ -Wall -Wextra -g -O2 -o twsWatcher twsWatcher-Main.o PosixTestClient.o TwsWatcher.o TwsCommonApp.o ClientConnection.o  ../PosixSocketClient/.libs/libtwsapi.a
+NYI: TwsCommonApp::AddCommonCommandLineArgs()
+NYI: TwsWatcher.RunMain
+NYI: ClientConnection::TryConnecting(unsigned uiAttempts)
+Error: TwsWatcher: connection failed
+steve@beast:~/projects/2017/broom/twsapi/twsapi/Watcher$ mm
+rm -f twsWatcher-Main.o PosixTestClient.o TwsCommonApp.o ClientConnection.o TwsWatcher.o twsWatcher-Main.d PosixTestClient.d TwsCommonApp.d ClientConnection.d TwsWatcher.d twsWatcher
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o twsWatcher-Main.o twsWatcher-Main.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o PosixTestClient.o PosixTestClient.cpp
+g++ -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo   -c -o TwsWatcher.o TwsWatcher.cpp
