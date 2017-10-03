@@ -19,8 +19,9 @@ using namespace std;
 using namespace TwsApp;
 
 TwsWatcher::TwsWatcher(int iArgCount, const char** asArgs)
-  : TwsCommonApp(iArgCount, asArgs), iDebugWatcher(100),
-    iPort(7496), sHost("")
+  : TwsCommonApp(iArgCount, asArgs),
+    iDebugWatcher(100),
+    sHost(""), iPort(7496)
 {
 
 }
@@ -28,16 +29,16 @@ TwsWatcher::TwsWatcher(int iArgCount, const char** asArgs)
 int TwsWatcher::RunMain()
 {
 
-  NYI("TwsWatcher.RunMain");
   ClientConnection oConn;
 
   unsigned max_attempts = 10;
-  if (oConn.TryConnecting(max_attempts))
+  if (! oConn.TryConnecting(max_attempts, sHost, iPort))
     {
-    } else
-    {
-      cerr << "Error: TwsWatcher: connection failed" << endl << flush;
+       cerr << "Error: TwsWatcher: connection failed" << endl << flush;
+       return 1;
     }
+
+  NYI("TwsWatcher.RunMain");
 #if 0
 	unsigned attempt = 0;
 	

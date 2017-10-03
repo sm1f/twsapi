@@ -13,8 +13,9 @@ class TwsWatcher : public TwsCommonApp
 {
  protected:
   int iDebugWatcher;
-  int iPort;
   MyString sHost;
+  int iPort;
+  
  public:
   TwsWatcher(int iArgCount, const char** asArgs);
 

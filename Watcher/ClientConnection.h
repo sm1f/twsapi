@@ -10,11 +10,19 @@
 
 
 class ClientConnection {
+ private:
+  int iDebug;
+  IB::PosixTestClient posixTextClient;
+  int iClientId;
+  bool bWasConnected; // result of last connection attemp
+  
  public:
   ClientConnection();
 
-  virtual bool TryConnecting(unsigned uiAttempts);
-  
+  virtual bool TryConnecting(unsigned uiAttempts, TwsApp::MyString sHost, int iPort);
+
+
+  virtual void DB(int iLevel, TwsApp::MyString text);
 };
 
 #endif //  __CLIENT_CONNECTION__
