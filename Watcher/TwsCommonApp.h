@@ -1,3 +1,7 @@
+// CopyRight Stephen Morrisson 2017
+// All rights reserved.
+
+
 
 
 #ifndef __TWS_COMMON_APP__

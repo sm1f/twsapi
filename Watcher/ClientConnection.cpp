@@ -1,3 +1,5 @@
+// CopyRight Stephen Morrisson 2017
+// All rights reserved.
 
 #include "ClientConnection.h"
 
@@ -13,6 +15,7 @@ bool ClientConnection::TryConnecting(unsigned uiAttempts, MyString sHost, int iP
 {
   DB(90, "TryConnecting called");
 
+#if 0
   for (unsigned count = 0; count < uiAttempts; count++)
     {
       if (posixTestClient.connect( sHost, iPort, iClientId)) {
@@ -22,12 +25,13 @@ bool ClientConnection::TryConnecting(unsigned uiAttempts, MyString sHost, int iP
       }
     }
   DB(50, "TryConnecting failed");
-
+#endif // 0
   return false;
 }
 
 void ClientConnection::OldProcessMessages()
 {
+#if 0
   for (int i = 0; i < 10; i++)
     {
       DB(0, "here");
@@ -38,10 +42,12 @@ void ClientConnection::OldProcessMessages()
 	DB(0, "isConnected failed");
       }
     }
+#endif // 0
 }
 
 void ClientConnection::Disconnect()
 {
+#if 0
   if (posixTestClient.isConnected())
     {
       DB(90, "Disconnect called");
@@ -50,6 +56,7 @@ void ClientConnection::Disconnect()
     } else {
     DB(50, "Disconnect was called when client was already disconnected");
   }
+#endif // 0
 }
 
 

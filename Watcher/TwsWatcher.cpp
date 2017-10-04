@@ -1,3 +1,5 @@
+// CopyRight Stephen Morrisson 2017
+// All rights reserved.
 
 #include <iostream>
 // needed for printf
@@ -28,7 +30,7 @@ TwsWatcher::TwsWatcher(int iArgCount, const char** asArgs)
 
 int TwsWatcher::RunMain()
 {
-
+#if 0
   ClientConnection oConn;
 
   unsigned max_attempts = 10;
@@ -43,7 +45,8 @@ int TwsWatcher::RunMain()
   oConn.OldProcessMessages();
 
   oConn.Disconnect();
-
+#endif // 0
+  
 #if 0
 	unsigned attempt = 0;
 	

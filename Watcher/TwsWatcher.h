@@ -1,3 +1,5 @@
+// CopyRight Stephen Morrisson 2017
+// All rights reserved.
 
 
 #ifndef __TWS_WATCHER_H__

@@ -1,17 +1,10 @@
-/* Copyright (C) 2013 Interactive Brokers LLC. All rights reserved. This code is subject to the terms
- * and conditions of the IB API Non-Commercial License or the IB API Commercial License, as applicable. */
+// CopyRight Stephen Morrisson 2017
+// All rights reserved.
 
-#ifdef _WIN32
-# include <windows.h>
-# define sleep( seconds) Sleep( seconds * 1000);
-#else
-# include <unistd.h>
-#endif
+
 
 #include <stdio.h>
 #include <iostream>
-
-#include "PosixTestClient.h"
 
 #include "TwsWatcher.h"
 
@@ -24,6 +17,7 @@ using namespace TwsApp;
 
 int main(int argc, const char** argv)
 {
+#if 0
   TwsWatcher that(argc, argv);
   //  that.SetGeneralDebugLevel(100);
 
@@ -35,6 +29,8 @@ int main(int argc, const char** argv)
     }
 
   return result;
+#endif // 0
+  return -1;
 }
 
 #if 0
