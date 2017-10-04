@@ -139,8 +139,22 @@ void ClientConnection::TryRecieving()
 
 bool ClientConnection::TrySending(struct timeval &tTimeout)
 {
-  NYI("ClientConnection::TryRecivieving()");
+  NYI("ClientConnection::TrySending()");
   return false;
+}
+
+
+int ClientConnection::EnqueueGetOrderId(int iTimeoutInSec)
+{
+  DB(90, "ClientConnection::EnqueueGetOrderId(int iTimeoutInSec)");
+  oMessages.EnqueueGetOrderId();
+
+  struct timeval tTimeout = { iTimeoutInSec, 0};
+  while (TrySending(tTimeout)) {
+    DB(100, "TrySending returned true, trying to send more");
+  }
+  NYI("ClientConnection::EnqueueGetOrderId(int iTimeoutInSec)");
+  return -1;
 }
 
 

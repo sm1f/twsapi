@@ -22,10 +22,10 @@
 #include "Order.h"
 #include "EWrapper.h"
 
-//typedef shared_ptr<IB::Contract> ContractPtr;
-//typedef shared_ptr<IB::Order> OrderPtr;
-typedef IB::Contract* ContractPtr;
-typedef IB::Order* OrderPtr;
+typedef shared_ptr<IB::Contract> ContractPtr;
+typedef shared_ptr<IB::Order> OrderPtr;
+//typedef IB::Contract* ContractPtr;
+//typedef IB::Order* OrderPtr;
 
 namespace IB {
 

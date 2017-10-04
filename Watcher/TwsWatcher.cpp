@@ -42,6 +42,14 @@ int TwsWatcher::RunMain()
 
   NYI("TwsWatcher.RunMain");
 
+  int iWaitInSec = 2;
+  int iNextId = oConn->EnqueueGetOrderId(iWaitInSec);
+  if (iNextId < 0)
+    {
+      cout << "EnqueueGetOrderId(iWaitInSec) returned neg id: " << iNextId << endl;
+      return -1;
+    }
+  
   int iOrderId = oConn->EnqueOrder();
   cout << "TwsWatcher enqued order with id: " << iOrderId << endl;
 

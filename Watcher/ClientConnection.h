@@ -41,6 +41,8 @@ class ClientConnection : public IB::ETWrapper {
   virtual void SendRecieve(struct timeval &tTimeout);
   virtual void TryRecieving();
   virtual bool TrySending(struct timeval &tTimeout);
+
+  virtual int EnqueueGetOrderId(int iTimeoutInSec);
   
   virtual int PlaceOrder(struct timeval &tTimeout);
 

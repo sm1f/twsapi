@@ -29,6 +29,11 @@ typedef ETMessage* ETMessagePtr;
 typedef std::queue<ETMessagePtr> MessageQueue;
 
 
+class GetOrderIdMsg : public ETMessage {
+ public:
+  GetOrderIdMsg();
+};
+
 class PlaceOrderMsg : public ETMessage {
  private:
   int messageId;
@@ -43,6 +48,7 @@ class ETMessages {
  public:
   ETMessages();
 
+  void EnqueueGetOrderId();
   int PlaceOrder(int messageId, ContractPtr pContract, OrderPtr pOrder);
  private:
   MessageQueue messages;

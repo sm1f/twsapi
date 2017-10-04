@@ -7,6 +7,7 @@
 using namespace std;
 
 
+/** ET Message ************************/
 int ETMessage::iMessageCount = 0;
 
 ETMessage::ETMessage()
@@ -14,11 +15,14 @@ ETMessage::ETMessage()
 {
 }
 
-
-ETMessages::ETMessages()
-  : iDebug(100)
+/** Get Order Id Msg *******************/
+GetOrderIdMsg::GetOrderIdMsg()
 {
 }
+
+
+/** Place Order Msg *******************/
+
 
 PlaceOrderMsg::PlaceOrderMsg(int messageId, ContractPtr pContract, OrderPtr pOrder)
 {
@@ -26,6 +30,21 @@ PlaceOrderMsg::PlaceOrderMsg(int messageId, ContractPtr pContract, OrderPtr pOrd
   this->pContract = pContract;
   this->pOrder = pOrder;
 }
+
+/**  ET MESSAGES  ********************************/
+
+ETMessages::ETMessages()
+  : iDebug(100)
+{
+}
+
+void ETMessages::EnqueueGetOrderId()
+{
+  DB(90, "ETMessages::EnqueueGetOrderId()");
+
+  messages.push(new GetOrderIdMsg());
+}
+
 
 int ETMessages::PlaceOrder(int messageId, ContractPtr pContract, OrderPtr pOrder)
 {
