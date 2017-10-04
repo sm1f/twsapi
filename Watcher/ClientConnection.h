@@ -12,7 +12,7 @@
 class ClientConnection {
  private:
   int iDebug;
-  IB::PosixTestClient posixTextClient;
+  IB::PosixTestClient posixTestClient;
   int iClientId;
   bool bWasConnected; // result of last connection attemp
   
@@ -20,6 +20,7 @@ class ClientConnection {
   ClientConnection();
 
   virtual bool TryConnecting(unsigned uiAttempts, TwsApp::MyString sHost, int iPort);
+  virtual void Disconnect();
 
 
   virtual void DB(int iLevel, TwsApp::MyString text);

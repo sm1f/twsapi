@@ -15,7 +15,7 @@ bool ClientConnection::TryConnecting(unsigned uiAttempts, MyString sHost, int iP
 
   for (unsigned count = 0; count < uiAttempts; count++)
     {
-      if (posixTextClient.connect( sHost, iPort, iClientId)) {
+      if (posixTestClient.connect( sHost, iPort, iClientId)) {
 	bWasConnected = true;
 	DB(100, "TryConnecting success");
 	return true;
@@ -24,6 +24,18 @@ bool ClientConnection::TryConnecting(unsigned uiAttempts, MyString sHost, int iP
   DB(50, "TryConnecting failed");
 
   return false;
+}
+
+void ClientConnection::Disconnect()
+{
+  if (posixTestClient.isConnected())
+    {
+      DB(90, "Disconnect called");
+      posixTestClient.disconnect();
+      DB(100, "Disconnect disconnected");
+    } else {
+    DB(50, "Disconnect was called when client was already disconnected");
+  }
 }
 
 
