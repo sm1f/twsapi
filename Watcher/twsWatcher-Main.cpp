@@ -17,7 +17,8 @@ using namespace TwsApp;
 
 int main(int argc, const char** argv)
 {
-#if 0
+  cout << "TwsWatcher V0.1" << endl;
+  
   TwsWatcher that(argc, argv);
   //  that.SetGeneralDebugLevel(100);
 
@@ -29,39 +30,4 @@ int main(int argc, const char** argv)
     }
 
   return result;
-#endif // 0
-  return -1;
 }
-
-#if 0
-  
-	const char* host = argc > 1 ? argv[1] : "";
-	unsigned int port = argc > 2 ? atoi(argv[2]) : 7496;
-	int clientId = 0;
-
-	unsigned attempt = 0;
-	printf( "Start of POSIX Socket Client Test %u\n", attempt);
-
-	for (;;) {
-		++attempt;
-		printf( "Attempt %u of %u\n", attempt, MAX_ATTEMPTS);
-
-		IB::PosixTestClient client;
-
-		client.connect( host, port, clientId);
-
-		while( client.isConnected()) {
-			client.processMessages();
-		}
-
-		if( attempt >= MAX_ATTEMPTS) {
-			break;
-		}
-
-		printf( "Sleeping %u seconds before next attempt\n", SLEEP_TIME);
-		sleep( SLEEP_TIME);
-	}
-
-	printf ( "End of POSIX Socket Client Test\n");
-
-#endif // 0

@@ -8,10 +8,10 @@ BINS=twsWatcher
 CFLAGS+=-MMD
 #CXXFLAGS+= -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable \
 
-CXXFLAGS+= -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable \
+CXXFLAGS+= -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -std=c++11 \
 	-DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src \
-        -I../Shared -DIB_USE_STD_STRING -Wextra -MT TestPosixSocketClient-PosixTestClient.o \
-	-MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo
+        -I../Shared -DIB_USE_STD_STRING -Wextra \
+	-MD -MP
 
 
 twsWatcher: $(OBJECTS) $(HEADERS)
