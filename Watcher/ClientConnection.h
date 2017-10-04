@@ -9,11 +9,16 @@
 #include <iostream>
 #include <memory>
 #include <stdio.h> //printf()
+#include <vector>
 
 #include "TwsCommonApp.h"
 #include "ETWrapper.h"
+#include "ETMessages.h"
 
 //#include "PosixTestClient.h"
+
+
+
 
 class ClientConnection : public IB::ETWrapper {
 
@@ -22,17 +27,28 @@ class ClientConnection : public IB::ETWrapper {
   //  IB::PosixTestClient posixTestClient;
   int iClientId;
   bool bWasConnected; // result of last connection attemp
+  ETMessages oMessages;
   
  public:
   ClientConnection();
 
-  virtual bool TryConnecting(unsigned uiAttempts, TwsApp::MyString sHost, int iPort);
+  virtual bool TryConnecting(unsigned uiAttempts, MyString sHost, int iPort);
   virtual void Disconnect();
 
-  // hack
-  void OldProcessMessages();
+  virtual void Listen();
 
-  virtual void DB(int iLevel, TwsApp::MyString text);
+  virtual int EnqueOrder();
+  virtual void SendRecieve(struct timeval &tTimeout);
+  virtual void TryRecieving();
+  virtual bool TrySending(struct timeval &tTimeout);
+  
+  virtual int PlaceOrder(struct timeval &tTimeout);
+
+  // util fuctions
+  virtual void SetContract(ContractPtr pContract, MyString sSymbol, MyString sSecType, MyString sExchange, MyString sCurrency);
+  virtual void SetOrder(OrderPtr pOrder, MyString sAction, int iQuantity, MyString sOrderType, float fPrice);
+  
+  virtual void DB(int iLevel, MyString text);
 
 };
 

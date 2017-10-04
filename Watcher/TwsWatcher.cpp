@@ -42,8 +42,18 @@ int TwsWatcher::RunMain()
 
   NYI("TwsWatcher.RunMain");
 
-  oConn->OldProcessMessages();
+  int iOrderId = oConn->EnqueOrder();
+  cout << "TwsWatcher enqued order with id: " << iOrderId << endl;
 
+
+  struct timeval tSendReciveTimeout = {1,1};
+  oConn->SendRecieve(tSendReciveTimeout);
+
+  struct timeval tPlaceOrderTimeout = {1,1};
+  oConn->PlaceOrder(tPlaceOrderTimeout);
+  
+  oConn->Listen();
+  
   oConn->Disconnect();
   
   return 0;

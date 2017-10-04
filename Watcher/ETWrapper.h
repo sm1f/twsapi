@@ -13,13 +13,19 @@
 #include <iostream>
 #include <cstdlib>
 
-#include "EWrapper.h"
 #include <stdio.h> //printf()
 #include "TagValue.h"
 #include "Execution.h"
 #include "ScannerSubscription.h"
 #include "EPosixClientSocket.h"
+#include "Contract.h"
+#include "Order.h"
+#include "EWrapper.h"
 
+//typedef shared_ptr<IB::Contract> ContractPtr;
+//typedef shared_ptr<IB::Order> OrderPtr;
+typedef IB::Contract* ContractPtr;
+typedef IB::Order* OrderPtr;
 
 namespace IB {
 
@@ -30,11 +36,12 @@ class ETWrapper : public EWrapper
  public:
   ETWrapper();
 
- private:
+ protected:
   std::unique_ptr<EPosixClientSocket> m_pClient;
 
  public:
-  // virtual methods required by EWrapper
+  //*** virtual methods required by EWrapper
+   virtual void connectionClosed();
    virtual void tickPrice( TickerId tickerId, TickType field, double price, int canAutoExecute);
    virtual void tickSize( TickerId tickerId, TickType field, int size);
    virtual void tickOptionComputation( TickerId tickerId, TickType tickType, double impliedVol, double delta,
@@ -49,7 +56,6 @@ class ETWrapper : public EWrapper
    virtual void openOrder( OrderId orderId, const Contract&, const Order&, const OrderState&);
    virtual void openOrderEnd();
    virtual void winError( const IBString &str, int lastError);
-   virtual void connectionClosed();
    virtual void updateAccountValue(const IBString& key, const IBString& val,
    const IBString& currency, const IBString& accountName);
    virtual void updatePortfolio( const Contract& contract, int position,

@@ -18,6 +18,7 @@ using namespace std;
 namespace IB {
 
 ETWrapper::ETWrapper()
+  : EWrapper(), m_pClient(new EPosixClientSocket(this))
 {
 }
 

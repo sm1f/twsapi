@@ -17,9 +17,13 @@
 
 #define NFI(text) {}
 
-namespace TwsApp {
+#define THINK_ABOUT(text)
 
 typedef const char* MyString;
+
+
+
+namespace TwsApp {
 
 class CommandLineDatum
 {
