@@ -71,6 +71,7 @@ bool PosixTestClient::isConnected() const
 
 void PosixTestClient::processMessages()
 {
+  printf("processMessages %d\n", m_state);
 	fd_set readSet, writeSet;
 
 	struct timeval tval;
@@ -79,6 +80,7 @@ void PosixTestClient::processMessages()
 
 	time_t now = time(NULL);
 
+  printf("processMessages AA %d\n", m_state);
 	switch (m_state) {
 		case ST_PLACEORDER:
 			placeOrder();
@@ -91,6 +93,7 @@ void PosixTestClient::processMessages()
 		case ST_CANCELORDER_ACK:
 			break;
 		case ST_PING:
+  printf("processMessages BB ping %d\n", m_state);
 			reqCurrentTime();
 			break;
 		case ST_PING_ACK:
@@ -107,11 +110,13 @@ void PosixTestClient::processMessages()
 			break;
 	}
 
+  printf("processMessages FF %d\n", m_state);
 	if( m_sleepDeadline > 0) {
 		// initialize timeout with m_sleepDeadline - now
 		tval.tv_sec = m_sleepDeadline - now;
 	}
 
+  printf("processMessages HH %d\n", m_state);
 	if( m_pClient->fd() >= 0 ) {
 
 		FD_ZERO( &readSet);
@@ -133,18 +138,24 @@ void PosixTestClient::processMessages()
 			return;
 		}
 
+  printf("processMessages SS %d\n", m_state);
 		if( FD_ISSET( m_pClient->fd(), &writeSet)) {
 			// socket is ready for writing
 			m_pClient->onSend();
 		}
 
+  printf("processMessages TT %d\n", m_state);
 		if( m_pClient->fd() < 0)
 			return;
 
+  printf("processMessages UU %d\n", m_state);
 		if( FD_ISSET( m_pClient->fd(), &readSet)) {
 			// socket is ready for reading
+  printf("processMessages WW %d\n", m_state);
 			m_pClient->onReceive();
+  printf("processMessages YY %d\n", m_state);
 		}
+  printf("processMessages ZZ %d\n", m_state);
 	}
 }
 
@@ -158,12 +169,14 @@ void PosixTestClient::reqCurrentTime()
 	m_sleepDeadline = time( NULL) + PING_DEADLINE;
 
 	m_state = ST_PING_ACK;
+	printf("ZZ PosixTestClient::reqCurrentTime(): %d\n", m_state);
 
 	m_pClient->reqCurrentTime();
 }
 
 void PosixTestClient::placeOrder()
 {
+  printf("placeOrder Called.\n");
 	Contract contract;
 	Order order;
 
@@ -180,7 +193,8 @@ void PosixTestClient::placeOrder()
 	printf( "Placing Order %ld: %s %ld %s at %f\n", m_orderId, order.action.c_str(), order.totalQuantity, contract.symbol.c_str(), order.lmtPrice);
 
 	m_state = ST_PLACEORDER_ACK;
-
+	printf("ZZ placeOrder(): %d\n", m_state);
+	
 	m_pClient->placeOrder( m_orderId, contract, order);
 }
 
@@ -189,6 +203,7 @@ void PosixTestClient::cancelOrder()
 	printf( "Cancelling Order %ld\n", m_orderId);
 
 	m_state = ST_CANCELORDER_ACK;
+	printf("ZZ cancelOrder(): %d\n", m_state);
 
 	m_pClient->cancelOrder( m_orderId);
 }
@@ -209,13 +224,17 @@ void PosixTestClient::orderStatus( OrderId orderId, const IBString &status, int 
 
 		printf( "Order: id=%ld, status=%s\n", orderId, status.c_str());
 	}
+	printf("ZZ orderStatus(): %d\n", m_state);
+	
 }
 
 void PosixTestClient::nextValidId( OrderId orderId)
 {
 	m_orderId = orderId;
 
+	printf("ZZ A nextValidId(): %d\n", m_state);
 	m_state = ST_PLACEORDER;
+	printf("ZZ B nextValidId(): %d\n", m_state);
 }
 
 void PosixTestClient::currentTime( long time)
@@ -229,6 +248,7 @@ void PosixTestClient::currentTime( long time)
 		m_sleepDeadline = now + SLEEP_BETWEEN_PINGS;
 
 		m_state = ST_IDLE;
+	printf("ZZ currentTime(): %d\n", m_state);
 	}
 }
 

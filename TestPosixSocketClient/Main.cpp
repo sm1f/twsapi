@@ -2,10 +2,11 @@
  * and conditions of the IB API Non-Commercial License or the IB API Commercial License, as applicable. */
 
 #ifdef _WIN32
-# include <windows.h>
-# define sleep( seconds) Sleep( seconds * 1000);
+#include <windows.h>
+#define SLEEP( seconds) Sleep( seconds * 1000);
 #else
-# include <unistd.h>
+#include <unistd.h>
+#define SLEEP( seconds) sleep( seconds);
 #endif
 
 #include <stdio.h>
@@ -33,6 +34,7 @@ int main(int argc, char** argv)
 		client.connect( host, port, clientId);
 
 		while( client.isConnected()) {
+		  SLEEP(1);
 			client.processMessages();
 		}
 
@@ -41,7 +43,7 @@ int main(int argc, char** argv)
 		}
 
 		printf( "Sleeping %u seconds before next attempt\n", SLEEP_TIME);
-		sleep( SLEEP_TIME);
+		SLEEP( SLEEP_TIME);
 	}
 
 	printf ( "End of POSIX Socket Client Test\n");
