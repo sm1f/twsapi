@@ -22,6 +22,8 @@ class ClientConnection {
   virtual bool TryConnecting(unsigned uiAttempts, TwsApp::MyString sHost, int iPort);
   virtual void Disconnect();
 
+  // hack
+  void OldProcessMessages();
 
   virtual void DB(int iLevel, TwsApp::MyString text);
 };

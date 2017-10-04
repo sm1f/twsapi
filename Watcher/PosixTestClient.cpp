@@ -164,6 +164,7 @@ void PosixTestClient::reqCurrentTime()
 
 void PosixTestClient::placeOrder()
 {
+  printf("PlaceOrder called");
 	Contract contract;
 	Order order;
 

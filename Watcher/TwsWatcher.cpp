@@ -40,7 +40,10 @@ int TwsWatcher::RunMain()
 
   NYI("TwsWatcher.RunMain");
 
+  oConn.OldProcessMessages();
+
   oConn.Disconnect();
+
 #if 0
 	unsigned attempt = 0;
 	

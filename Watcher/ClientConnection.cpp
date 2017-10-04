@@ -26,6 +26,20 @@ bool ClientConnection::TryConnecting(unsigned uiAttempts, MyString sHost, int iP
   return false;
 }
 
+void ClientConnection::OldProcessMessages()
+{
+  for (int i = 0; i < 10; i++)
+    {
+      DB(0, "here");
+      if (posixTestClient.isConnected())
+	{
+	  posixTestClient.processMessages();
+	} else {
+	DB(0, "isConnected failed");
+      }
+    }
+}
+
 void ClientConnection::Disconnect()
 {
   if (posixTestClient.isConnected())
@@ -46,3 +60,4 @@ void ClientConnection::DB(int iLevel, MyString text)
       cout << "DB ClientConnection::" << text << endl;
     }
 }
+
