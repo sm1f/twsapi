@@ -14,6 +14,7 @@
 #include "TwsCommonApp.h"
 #include "ETWrapper.h"
 
+class ClientConnection;
 
 class ETMessage {
  private:
@@ -21,17 +22,21 @@ class ETMessage {
  public:
   ETMessage();
   int GetId();
+
+  virtual bool Send(std::shared_ptr<IB::EPosixClientSocket> pPosixClientSocket, struct timeval &tTimeout) = 0;
  private:
   int id;
 };
 
-typedef ETMessage* ETMessagePtr;
+typedef std::shared_ptr<ETMessage> ETMessagePtr;
 typedef std::queue<ETMessagePtr> MessageQueue;
 
 
 class GetOrderIdMsg : public ETMessage {
  public:
   GetOrderIdMsg();
+
+  virtual bool Send(std::shared_ptr<IB::EPosixClientSocket> pPosixClientSocket, struct timeval &tTimeout);
 };
 
 class PlaceOrderMsg : public ETMessage {
@@ -41,6 +46,8 @@ class PlaceOrderMsg : public ETMessage {
   OrderPtr pOrder;
  public:
   PlaceOrderMsg(int messageId, ContractPtr pContract, OrderPtr pOrder);
+
+  virtual bool Send(std::shared_ptr<IB::EPosixClientSocket> pPosixClientSocket, struct timeval &tTimeout);
 };
 
 
@@ -50,11 +57,15 @@ class ETMessages {
 
   void EnqueueGetOrderId();
   int PlaceOrder(int messageId, ContractPtr pContract, OrderPtr pOrder);
+
+  bool TrySending(std::shared_ptr<IB::EPosixClientSocket> pPosixClientSocket, struct timeval &tTimeout);
  private:
-  MessageQueue messages;
+  int iNextOrderId;  // assume zero at start.
+  MessageQueue* qMessages;
 
   int iDebug;
   void DB(int iLevel, MyString text);
+  void DB(int iLevel, MyString text, int iVal);
   
 };
 

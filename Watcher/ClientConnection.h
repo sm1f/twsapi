@@ -18,16 +18,25 @@
 //#include "PosixTestClient.h"
 
 
+typedef enum 
+  {
+    RS_NONE,
+    RS_SENT,
+    RS_ACK,
+  } RequestState;
+
 
 
 class ClientConnection : public IB::ETWrapper {
-
+  
  private:
   int iDebug;
   //  IB::PosixTestClient posixTestClient;
   int iClientId;
   bool bWasConnected; // result of last connection attemp
-  ETMessages oMessages;
+  ETMessages* pMessages;
+
+  RequestState rsGetOrderId;
   
  public:
   ClientConnection();
@@ -35,13 +44,7 @@ class ClientConnection : public IB::ETWrapper {
   virtual bool TryConnecting(unsigned uiAttempts, MyString sHost, int iPort);
   virtual void Disconnect();
 
-  virtual void Listen();
-
   virtual int EnqueOrder();
-  virtual void SendRecieve(struct timeval &tTimeout);
-  virtual void TryRecieving();
-  virtual bool TrySending(struct timeval &tTimeout);
-
   virtual int EnqueueGetOrderId(int iTimeoutInSec);
   
   virtual int PlaceOrder(struct timeval &tTimeout);
@@ -52,6 +55,16 @@ class ClientConnection : public IB::ETWrapper {
   
   virtual void DB(int iLevel, MyString text);
 
+#if 1
+  // does not send or recieved directly.
+  // used calls to send messages, then call backs are made.
+  virtual void Listen();
+
+  virtual void SendRecieve(struct timeval &tTimeout);
+  virtual void TryRecieving(struct timeval &tTimeout);
+  virtual bool TrySending(struct timeval &tTimeout);
+#endif // 0
+  
 };
 
 

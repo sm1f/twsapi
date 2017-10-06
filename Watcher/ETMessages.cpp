@@ -20,6 +20,13 @@ GetOrderIdMsg::GetOrderIdMsg()
 {
 }
 
+bool GetOrderIdMsg::Send(std::shared_ptr<IB::EPosixClientSocket> pPosixClientSocket, struct timeval &tTimeout)
+{
+  pPosixClientSocket->reqIds(-1);
+  return true;
+}
+
+
 
 /** Place Order Msg *******************/
 
@@ -31,29 +38,41 @@ PlaceOrderMsg::PlaceOrderMsg(int messageId, ContractPtr pContract, OrderPtr pOrd
   this->pOrder = pOrder;
 }
 
+bool PlaceOrderMsg::Send(std::shared_ptr<IB::EPosixClientSocket> pPosixClientSocket, struct timeval &tTimeout)
+{
+  NYI("PlaceOrderMsg::Send(std::shared_ptr<IB::EPosixClientSocket> pPosixClientSocket, struct timeval &tTimeout)");
+  return false;
+}
+
+
 /**  ET MESSAGES  ********************************/
 
 ETMessages::ETMessages()
-  : iDebug(100)
+  : iNextOrderId(0), qMessages(new MessageQueue()), iDebug(100)
 {
+  THINK_ABOUT("next order id.  Comments say can assume zero unless... but set with reqIds");
 }
 
 void ETMessages::EnqueueGetOrderId()
 {
-  DB(90, "ETMessages::EnqueueGetOrderId()");
+  DB(0, "ETMessages::EnqueueGetOrderId() start");
 
-  messages.push(new GetOrderIdMsg());
+  std::shared_ptr<GetOrderIdMsg> msg = std::make_unique<GetOrderIdMsg>();
+  qMessages->push(msg);
+
+  DB(0, "ETMessages::EnqueueGetOrderId() end");
 }
 
 
 int ETMessages::PlaceOrder(int messageId, ContractPtr pContract, OrderPtr pOrder)
 {
   DB(90, "ETMessages::PlaceOrder()");
-  PlaceOrderMsg* msg = new PlaceOrderMsg(messageId, pContract, pOrder);
+  std::shared_ptr<PlaceOrderMsg> msg = std::make_unique<PlaceOrderMsg>(messageId, pContract, pOrder);
 
-  messages.push(msg);
+  qMessages->push(msg);
   return messageId;
-  
+
+  NYI("ETMessages::PlaceOrder(int messageId, ContractPtr pContract, OrderPtr pOrder)");
   #if 0
     printf("placeOrder Called.\n");
 	Contract contract;
@@ -78,12 +97,38 @@ int ETMessages::PlaceOrder(int messageId, ContractPtr pContract, OrderPtr pOrder
 #endif // 0
 }
 
+bool ETMessages::TrySending(std::shared_ptr<IB::EPosixClientSocket> pPosixClientSocket, struct timeval &tTimeout)
+{
+  DB(90, "ETMessages::TrySending  queue size:", qMessages->size());
+
+  if (!qMessages->empty())
+    {
+      ETMessagePtr pMsg = qMessages->front();
+      bool result = pMsg->Send(pPosixClientSocket, tTimeout);
+      
+      qMessages->pop();
+      return result;
+    }
+  
+  DB(90, "ETMessages::TrySending done queue size:", qMessages->size());
+  return false;
+}
+
+
 
 void ETMessages::DB(int iLevel, MyString text)
 {
   if (iLevel <= iDebug)
     {
       cout << "DB ETMessages::" << text << endl;
+    }
+}
+
+void ETMessages::DB(int iLevel, MyString text, int iVal)
+{
+  if (iLevel <= iDebug)
+    {
+      cout << "DB ETMessages::" << text << " " << iVal << endl;
     }
 }
 

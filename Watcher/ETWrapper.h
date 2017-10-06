@@ -37,7 +37,7 @@ class ETWrapper : public EWrapper
   ETWrapper();
 
  protected:
-  std::unique_ptr<EPosixClientSocket> m_pClient;
+  std::shared_ptr<EPosixClientSocket> m_pClient;
 
  public:
   //*** virtual methods required by EWrapper

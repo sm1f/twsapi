@@ -9,7 +9,8 @@ using namespace TwsApp;
 
 
 ClientConnection::ClientConnection()
-  : iDebug(100), bWasConnected(false)
+  : iDebug(100), bWasConnected(false), pMessages(new ETMessages()),
+    rsGetOrderId(RS_NONE)
 {
 }
 
@@ -29,10 +30,12 @@ bool ClientConnection::TryConnecting(unsigned uiAttempts, MyString sHost, int iP
   return false;
 }
 
+#if 1
 void ClientConnection::Listen()
 {
   DB(90, "ClientConnection::Listen() start");
 
+  // I don't think this listens directly, it is just waiting for callbacks.
   if (m_pClient->fd() < 0)
     {
       DB(80, "ClientConnection::Listen() fd less then 0");
@@ -78,7 +81,9 @@ void ClientConnection::Listen()
     }
   
   DB(90, "ClientConnection::Listen() end");
-}
+} // Listen
+#endif // 1
+
 
 int ClientConnection::EnqueOrder()
 {
@@ -117,7 +122,7 @@ void ClientConnection::SendRecieve(struct timeval &tTimeout)
 
   if (FD_ISSET(m_pClient->fd(), &readSet))
     {
-      TryRecieving();
+      TryRecieving(tTimeout);
     }
 
   if (FD_ISSET(m_pClient->fd(), &writeSet))
@@ -132,28 +137,30 @@ void ClientConnection::SendRecieve(struct timeval &tTimeout)
   DB(90, "ClientConnection::SendRecieve() end");
 }
 
-void ClientConnection::TryRecieving()
+void ClientConnection::TryRecieving(struct timeval &tTimeout)
 {
-  NYI("ClientConnection::TryRecivieving()");
+  NYI("ClientConnection::TryRecieving()");
 }
 
 bool ClientConnection::TrySending(struct timeval &tTimeout)
 {
-  NYI("ClientConnection::TrySending()");
-  return false;
+  DB(100, "ClientConnection::TrySending()");
+  return pMessages->TrySending(this->m_pClient, tTimeout);
 }
 
 
 int ClientConnection::EnqueueGetOrderId(int iTimeoutInSec)
 {
   DB(90, "ClientConnection::EnqueueGetOrderId(int iTimeoutInSec)");
-  oMessages.EnqueueGetOrderId();
+  
+  pMessages->EnqueueGetOrderId();
 
   struct timeval tTimeout = { iTimeoutInSec, 0};
   while (TrySending(tTimeout)) {
+    pMessages->TrySending(m_pClient, tTimeout);
     DB(100, "TrySending returned true, trying to send more");
   }
-  NYI("ClientConnection::EnqueueGetOrderId(int iTimeoutInSec)");
+  TryRecieving(tTimeout);
   return -1;
 }
 
