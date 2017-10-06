@@ -1,6 +1,8 @@
 // CopyRight Stephen Morrisson 2017
 // All rights reserved.
 
+#include <unistd.h>
+
 #include "ClientConnection.h"
 
 using namespace std;
@@ -23,6 +25,12 @@ bool ClientConnection::TryConnecting(unsigned uiAttempts, MyString sHost, int iP
       if (m_pClient->eConnect2( sHost, iPort, iClientId)) {
 	bWasConnected = true;
 	DB(100, "TryConnecting success");
+
+#if 0	
+	m_pReader = new EReader(m_pClient, &m_osSignal);
+	m_pReader->start();
+	DB(100, "started reader");
+#endif // 0
 	return true;
       }
     }
@@ -139,7 +147,9 @@ void ClientConnection::SendRecieve(struct timeval &tTimeout)
 
 void ClientConnection::TryRecieving(struct timeval &tTimeout)
 {
-  NYI("ClientConnection::TryRecieving()");
+  NYI("ClientConnection::TryRecieving() sleep for 2");
+  sleep(2);
+  m_pClient->onReceive();
 }
 
 bool ClientConnection::TrySending(struct timeval &tTimeout)
@@ -152,6 +162,9 @@ bool ClientConnection::TrySending(struct timeval &tTimeout)
 int ClientConnection::EnqueueGetOrderId(int iTimeoutInSec)
 {
   DB(90, "ClientConnection::EnqueueGetOrderId(int iTimeoutInSec)");
+
+  m_pClient->reqIds(-1);
+#if 0
   
   pMessages->EnqueueGetOrderId();
 
@@ -161,6 +174,7 @@ int ClientConnection::EnqueueGetOrderId(int iTimeoutInSec)
     DB(100, "TrySending returned true, trying to send more");
   }
   TryRecieving(tTimeout);
+#endif // 0
   return -1;
 }
 

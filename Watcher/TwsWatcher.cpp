@@ -31,38 +31,55 @@ TwsWatcher::TwsWatcher(int iArgCount, const char** asArgs)
 int TwsWatcher::RunMain()
 {
 
-  ClientConnection* oConn = new ClientConnection();
+  ClientConnection* pConn = new ClientConnection();
+  int iWaitInSec = 2;
+  struct timeval tTimeout = { iWaitInSec, 0};
 
   unsigned max_attempts = 10;
-  if (! oConn->TryConnecting(max_attempts, sHost, iPort))
+  if (! pConn->TryConnecting(max_attempts, sHost, iPort))
     {
        cerr << "Error: TwsWatcher: connection failed" << endl << flush;
        return 1;
     }
 
+  NYI("About to sleep.");
+  sleep(iWaitInSec);
+  NYI("done sleeping.");
+  pConn->TryRecieving(tTimeout);
+
+  NYI("About to sleep.");
+  sleep(iWaitInSec);
+  NYI("done sleeping.");
+
+  int iNextId = pConn->EnqueueGetOrderId(iWaitInSec);
+
+  NYI("About to sleep.");
+  sleep(iWaitInSec);
+  NYI("done sleeping.");
+
+  pConn->TryRecieving(tTimeout);
+  
   NYI("TwsWatcher.RunMain");
 
-  int iWaitInSec = 2;
-  int iNextId = oConn->EnqueueGetOrderId(iWaitInSec);
   if (iNextId < 0)
     {
       cout << "EnqueueGetOrderId(iWaitInSec) returned neg id: " << iNextId << endl;
       return -1;
     }
   
-  int iOrderId = oConn->EnqueOrder();
+  int iOrderId = pConn->EnqueOrder();
   cout << "TwsWatcher enqued order with id: " << iOrderId << endl;
 
 
   struct timeval tSendReciveTimeout = {1,1};
-  oConn->SendRecieve(tSendReciveTimeout);
+  pConn->SendRecieve(tSendReciveTimeout);
 
   struct timeval tPlaceOrderTimeout = {1,1};
-  oConn->PlaceOrder(tPlaceOrderTimeout);
+  pConn->PlaceOrder(tPlaceOrderTimeout);
   
-  oConn->Listen();
+  pConn->Listen();
   
-  oConn->Disconnect();
+  pConn->Disconnect();
   
   return 0;
 }

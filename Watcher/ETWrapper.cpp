@@ -39,7 +39,12 @@ ETWrapper::ETWrapper()
 	   double lastFillPrice, int clientId, const IBString& whyHeld) { NYI("??orderStatus"); }
    void ETWrapper::openOrder( OrderId orderId, const Contract&, const Order&, const OrderState&) { NYI("??openOrder"); }
    void ETWrapper::openOrderEnd() { NYI("??openOrderEnd"); }
-   void ETWrapper::winError( const IBString &str, int lastError) { NYI("??winError"); }
+
+  void ETWrapper::winError( const IBString &str, int lastError)
+  {
+    NYI("??winError");
+    cout << "ETWrapper::winError( const IBString &str, int lastError) str: " << str << " lastError: " << lastError << endl; 
+  }
    void ETWrapper::connectionClosed() { NYI("??connectionClosed"); }
    void ETWrapper::updateAccountValue(const IBString& key, const IBString& val,
 				      const IBString& currency, const IBString& accountName) { NYI("??currency"); }
@@ -48,20 +53,39 @@ ETWrapper::ETWrapper()
       double unrealizedPNL, double realizedPNL, const IBString& accountName) { NYI("??updatePortfolio"); }
    void ETWrapper::updateAccountTime(const IBString& timeStamp) { NYI("??updateAccountTime"); }
    void ETWrapper::accountDownloadEnd(const IBString& accountName) { NYI("??accountDownloadEnd"); }
-   void ETWrapper::nextValidId( OrderId orderId) { NYI("??nextValidId"); }
+
+  void ETWrapper::nextValidId( OrderId orderId)
+  {
+    NYI("??nextValidId");
+    cout << "ETWrapper::nextValidId( OrderId orderId): " << orderId << endl;
+  }
    void ETWrapper::contractDetails( int reqId, const ContractDetails& contractDetails) { NYI("??contractDetails"); }
    void ETWrapper::bondContractDetails( int reqId, const ContractDetails& contractDetails) { NYI("??bondContractDetails"); }
    void ETWrapper::contractDetailsEnd( int reqId) { NYI("??contractDetailsEnd"); }
    void ETWrapper::execDetails( int reqId, const Contract& contract, const Execution& execution) { NYI("??execDetails"); }
    void ETWrapper::execDetailsEnd( int reqId) { NYI("??execDetailsEnd"); }
-   void ETWrapper::error(const int id, const int errorCode, const IBString errorString) { NYI("??error"); }
-   void ETWrapper::updateMktDepth(TickerId id, int position, int operation, int side,
+
+  void ETWrapper::error(const int id, const int errorCode, const IBString errorString)
+  {
+    NYI("??error");
+    cout << "ETWrapper::error(const int id, const int errorCode, const IBString errorString)"
+	 << "  id: " << id << "  errorCode: " << errorCode << "  errorString: " << errorString << endl;
+  }
+
+  void ETWrapper::updateMktDepth(TickerId id, int position, int operation, int side,
       double price, int size) { NYI("??updateMktDepth"); }
    void ETWrapper::updateMktDepthL2(TickerId id, int position, IBString marketMaker, int operation,
       int side, double price, int size) { NYI("??updateMktDepthL2"); }
    void ETWrapper::updateNewsBulletin(int msgId, int msgType, const IBString& newsMessage, const IBString& originExch) { NYI("??updateNewsBulletin"); }
-   void ETWrapper::managedAccounts( const IBString& accountsList) { NYI("??managedAccounts"); }
-   void ETWrapper::receiveFA(faDataType pFaDataType, const IBString& cxml) { NYI("??receiveFA"); }
+
+  void ETWrapper::managedAccounts( const IBString& accountsList)
+  {
+    NYI("??managedAccounts");
+    cout << "ETWrapper::managedAccounts( const IBString& accountsList) " << accountsList << endl;
+  }
+
+
+  void ETWrapper::receiveFA(faDataType pFaDataType, const IBString& cxml) { NYI("??receiveFA"); }
    void ETWrapper::historicalData(TickerId reqId, const IBString& date, double open, double high, 
 	   double low, double close, int volume, int barCount, double WAP, int hasGaps) { NYI("??double"); }
    void ETWrapper::scannerParameters(const IBString &xml) { NYI("??scannerParameters"); }
