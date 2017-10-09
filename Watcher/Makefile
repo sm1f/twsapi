@@ -1,5 +1,8 @@
 
 SOURCES=$(wildcard *.cpp)
+
+
+
 OBJECTS=$(SOURCES:.cpp=.o)
 HEADERS=$(wildcard *.h)
 DEPS=$(SOURCES:.cpp=.d)
@@ -12,6 +15,9 @@ CXXFLAGS+= -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -std=c+
 	-DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src \
         -I../Shared -DIB_USE_STD_STRING -Wextra \
 	-MD -MP
+
+# twsOrder: $(OBJECTS) $(HEADERS)
+#	/bin/bash ../libtool  --tag=CXX   --mode=link g++ -Wall -Wextra -g -O2   -o twsOrder $(OBJECTS) ../PosixSocketClient/libtwsapi.la 	
 
 
 twsWatcher: $(OBJECTS) $(HEADERS)

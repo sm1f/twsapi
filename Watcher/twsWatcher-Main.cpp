@@ -17,7 +17,7 @@ using namespace TwsApp;
 
 int main(int argc, const char** argv)
 {
-  cout << "TwsWatcher V0.1" << endl;
+  cout << "TwsWatcher V0.2" << endl;
   
   TwsWatcher that(argc, argv);
   //  that.SetGeneralDebugLevel(100);

@@ -58,6 +58,7 @@ class CommandLineData
   
  public:
   CommandLineData(int iArgCount, const char** asArgs);
+  virtual bool ParseArgs();
 
   virtual void AddIntArg(const char* shortName, const char* fullName, int* piVar);
 
@@ -83,6 +84,7 @@ class TwsCommonApp
   TwsCommonApp(int iArgCount, const char** asArgs);
   
   virtual int RunMain();
+  virtual bool ParseArgs();
   virtual void AddCommonCommandLineArgs();
 };
 

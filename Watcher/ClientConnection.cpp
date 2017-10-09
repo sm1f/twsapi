@@ -52,6 +52,15 @@ void ClientConnection::RequestOrderId()
   DB(500, "ClientConnection::RequestOrderId() done.");
 }
 
+IB::OrderId ClientConnection::PlaceOrder(ContractPtr pContract, OrderPtr pOrder)
+{
+  DB(10, "ClientConnection::PlaceOrder");
+  //  NYI("ClientConnection::PlaceOrder(ContractPtr pContract, OrderPtr pOrder)");
+  m_pClient->placeOrder( iOrderId, *pContract, *pOrder);
+  return iOrderId;;
+}
+
+
 void ClientConnection::Listen()
 {
   DB(90, "ClientConnection::Listen() started.");
@@ -68,3 +77,42 @@ void ClientConnection::DB(int iLevel, MyString text)
     }
 }
 
+void ClientConnection::DB(int iLevel, MyString text, long v1)
+{
+  if (iLevel <= iDebug)
+    {
+      cout << "DB ClientConnection::" << text << " " << v1 << endl;
+    }
+}
+
+
+// overriden from EWrapper
+
+void ClientConnection::error(const int id, const int errorCode, const IB::IBString errorString)
+{
+  if ((id == -1) && ((errorCode == 2106) || (errorCode == 2104)))
+    {
+      cout << "Msg: " << errorString << endl;
+    } else
+    {
+      cout << "ETWrapper::error(const int id, const int errorCode, const IBString errorString)"
+	   << "  id: " << id << "  errorCode: " << errorCode << "  errorString: " << errorString << endl;
+    }
+}
+
+void ClientConnection::managedAccounts( const IB::IBString& accountsList)
+{
+  cout << "managedAccounts: " << accountsList << endl;
+}
+
+void ClientConnection::nextValidId( IB::OrderId orderId)
+{
+  DB(99, "ClientConnection::nextValidId( OrderId orderId)", orderId);
+  iOrderId = orderId;
+}
+
+
+void ClientConnection::winError( const IB::IBString &str, int lastError)
+{
+  cout << "ClientConnection::winError( const IBString &str, int lastError) str: " << str << " lastError: " << lastError << endl; 
+}

@@ -25,12 +25,22 @@ TwsWatcher::TwsWatcher(int iArgCount, const char** asArgs)
     iDebugWatcher(100),
     sHost(""), iPort(7496)
 {
-
 }
+
+void TwsWatcher::AddTwsWatcherArgs()
+{
+}
+
 
 int TwsWatcher::RunMain()
 {
-
+  AddTwsWatcherArgs();
+  if (! ParseArgs())
+    {
+      cout << "Parse Args failed!!!" << endl;
+      return -1;
+    }
+  
   ClientConnection* pConn = new ClientConnection();
   int iWaitInSec = 3;
   struct timeval tTimeout = { iWaitInSec, 0};
@@ -45,6 +55,22 @@ int TwsWatcher::RunMain()
   DB(10, "Connected... request order id.");
   pConn->RequestOrderId();
 
+  DB(10, "PlaceOrder...");
+  ContractPtr pContract = std::make_shared<IB::Contract>();
+  pContract->symbol = "IBM";
+  pContract->secType = "STK";
+  pContract->exchange = "SMART";
+  pContract->currency = "USD";
+
+  OrderPtr pOrder = std::make_shared<IB::Order>();
+  pOrder->action = "BUY";
+  pOrder->totalQuantity = 1000;
+  pOrder->orderType = "LMT";
+  pOrder->lmtPrice = 0.01;
+
+  
+  IB::OrderId orderId = pConn->PlaceOrder(pContract, pOrder);
+  
   DB(10, "About to disconnect.");
   pConn->Disconnect();
   

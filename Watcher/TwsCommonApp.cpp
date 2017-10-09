@@ -30,6 +30,11 @@ CommandLineData::CommandLineData(int iArgCountIn, const char** asArgsIn)
 {
 }
 
+bool CommandLineData::ParseArgs()
+{
+  return false;
+}
+
 void CommandLineData::AddIntArg(const char* sShortName, const char* sFullName, int* piInt)
 {
   CommandLineInt* that = new CommandLineInt(sShortName, sFullName, piInt);
@@ -95,6 +100,11 @@ int TwsCommonApp::RunMain()
   NYI("TwsCommonApp::RunMain (should be overridden in sub class)");
 
   return 0;
+}
+
+bool TwsCommonApp::ParseArgs()
+{
+  return oCommandLineData.ParseArgs();
 }
 
 void TwsCommonApp::AddCommonCommandLineArgs()

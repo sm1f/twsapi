@@ -48,11 +48,21 @@ class ClientConnection : public IB::ETWrapper {
 
   virtual void RequestOrderId();
 
+  virtual IB::OrderId PlaceOrder(ContractPtr pContract, OrderPtr pOrder);
+
   virtual void DB(int iLevel, MyString text);
+  virtual void DB(int iLevel, MyString text, long v1);
 
  protected:
   // calls to repeated calls to listen, cause 508 error
   virtual void Listen();
+
+ public: // from EWrapper (overriding from ETWrapper)
+
+  virtual void error(const int id, const int errorCode, const IB::IBString errorString);
+  virtual void managedAccounts( const IB::IBString& accountsList);
+  virtual void nextValidId( IB::OrderId orderId);
+  virtual void winError( const IB::IBString &str, int lastError);
 
 };
 

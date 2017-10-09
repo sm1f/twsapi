@@ -24,6 +24,9 @@ class TwsWatcher : public TwsCommonApp
   virtual void DB(int level, MyString text);
   virtual int RunMain();
 
+ protected:
+  virtual void AddTwsWatcherArgs();
+
 };
 
 
