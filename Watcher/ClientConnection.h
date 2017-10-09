@@ -37,6 +37,8 @@ class ClientConnection : public IB::ETWrapper {
   ETMessages* pMessages;
 
   RequestState rsGetOrderId;
+
+  int iOrderId;
   
  public:
   ClientConnection();
@@ -44,27 +46,14 @@ class ClientConnection : public IB::ETWrapper {
   virtual bool TryConnecting(unsigned uiAttempts, MyString sHost, int iPort, int iWaitInSec);
   virtual void Disconnect();
 
-  virtual int EnqueOrder();
-  virtual int EnqueueGetOrderId(int iTimeoutInSec);
-  
-  virtual int PlaceOrder(struct timeval &tTimeout);
+  virtual void RequestOrderId();
 
-  // util fuctions
-  virtual void SetContract(ContractPtr pContract, MyString sSymbol, MyString sSecType, MyString sExchange, MyString sCurrency);
-  virtual void SetOrder(OrderPtr pOrder, MyString sAction, int iQuantity, MyString sOrderType, float fPrice);
-  
   virtual void DB(int iLevel, MyString text);
 
-#if 1
-  // does not send or recieved directly.
-  // used calls to send messages, then call backs are made.
+ protected:
+  // calls to repeated calls to listen, cause 508 error
   virtual void Listen();
 
-  virtual void SendRecieve(struct timeval &tTimeout);
-  virtual void TryRecieving();
-  virtual bool TrySending(struct timeval &tTimeout);
-#endif // 0
-  
 };
 
 

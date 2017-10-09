@@ -32,7 +32,7 @@ int TwsWatcher::RunMain()
 {
 
   ClientConnection* pConn = new ClientConnection();
-  int iWaitInSec = 2;
+  int iWaitInSec = 3;
   struct timeval tTimeout = { iWaitInSec, 0};
 
   unsigned max_attempts = 10;
@@ -42,40 +42,10 @@ int TwsWatcher::RunMain()
        return 1;
     }
 
-  pConn->TryRecieving();
+  DB(10, "Connected... request order id.");
+  pConn->RequestOrderId();
 
-  NYI("About to sleep.");
-  sleep(iWaitInSec);
-  NYI("done sleeping.");
-
-  int iNextId = pConn->EnqueueGetOrderId(iWaitInSec);
-
-  NYI("About to sleep.");
-  sleep(iWaitInSec);
-  NYI("done sleeping.");
-
-  pConn->TryRecieving();
-  
-  NYI("TwsWatcher.RunMain");
-
-  if (iNextId < 0)
-    {
-      cout << "EnqueueGetOrderId(iWaitInSec) returned neg id: " << iNextId << endl;
-      return -1;
-    }
-  
-  int iOrderId = pConn->EnqueOrder();
-  cout << "TwsWatcher enqued order with id: " << iOrderId << endl;
-
-
-  struct timeval tSendReciveTimeout = {1,1};
-  pConn->SendRecieve(tSendReciveTimeout);
-
-  struct timeval tPlaceOrderTimeout = {1,1};
-  pConn->PlaceOrder(tPlaceOrderTimeout);
-  
-  pConn->Listen();
-  
+  DB(10, "About to disconnect.");
   pConn->Disconnect();
   
   return 0;

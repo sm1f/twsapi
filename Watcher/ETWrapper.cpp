@@ -42,7 +42,6 @@ ETWrapper::ETWrapper()
 
   void ETWrapper::winError( const IBString &str, int lastError)
   {
-    NYI("??winError");
     cout << "ETWrapper::winError( const IBString &str, int lastError) str: " << str << " lastError: " << lastError << endl; 
   }
    void ETWrapper::connectionClosed() { NYI("??connectionClosed"); }
@@ -67,7 +66,6 @@ ETWrapper::ETWrapper()
 
   void ETWrapper::error(const int id, const int errorCode, const IBString errorString)
   {
-    NYI("??error");
     cout << "ETWrapper::error(const int id, const int errorCode, const IBString errorString)"
 	 << "  id: " << id << "  errorCode: " << errorCode << "  errorString: " << errorString << endl;
   }
