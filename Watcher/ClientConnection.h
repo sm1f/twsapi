@@ -41,7 +41,7 @@ class ClientConnection : public IB::ETWrapper {
  public:
   ClientConnection();
 
-  virtual bool TryConnecting(unsigned uiAttempts, MyString sHost, int iPort);
+  virtual bool TryConnecting(unsigned uiAttempts, MyString sHost, int iPort, int iWaitInSec);
   virtual void Disconnect();
 
   virtual int EnqueOrder();
@@ -61,7 +61,7 @@ class ClientConnection : public IB::ETWrapper {
   virtual void Listen();
 
   virtual void SendRecieve(struct timeval &tTimeout);
-  virtual void TryRecieving(struct timeval &tTimeout);
+  virtual void TryRecieving();
   virtual bool TrySending(struct timeval &tTimeout);
 #endif // 0
   

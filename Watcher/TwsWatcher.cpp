@@ -36,16 +36,13 @@ int TwsWatcher::RunMain()
   struct timeval tTimeout = { iWaitInSec, 0};
 
   unsigned max_attempts = 10;
-  if (! pConn->TryConnecting(max_attempts, sHost, iPort))
+  if (! pConn->TryConnecting(max_attempts, sHost, iPort, iWaitInSec))
     {
        cerr << "Error: TwsWatcher: connection failed" << endl << flush;
        return 1;
     }
 
-  NYI("About to sleep.");
-  sleep(iWaitInSec);
-  NYI("done sleeping.");
-  pConn->TryRecieving(tTimeout);
+  pConn->TryRecieving();
 
   NYI("About to sleep.");
   sleep(iWaitInSec);
@@ -57,7 +54,7 @@ int TwsWatcher::RunMain()
   sleep(iWaitInSec);
   NYI("done sleeping.");
 
-  pConn->TryRecieving(tTimeout);
+  pConn->TryRecieving();
   
   NYI("TwsWatcher.RunMain");
 

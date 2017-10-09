@@ -16,7 +16,7 @@ ClientConnection::ClientConnection()
 {
 }
 
-bool ClientConnection::TryConnecting(unsigned uiAttempts, MyString sHost, int iPort)
+bool ClientConnection::TryConnecting(unsigned uiAttempts, MyString sHost, int iPort, int iWaitInSec)
 {
   DB(90, "TryConnecting called");
 
@@ -26,11 +26,9 @@ bool ClientConnection::TryConnecting(unsigned uiAttempts, MyString sHost, int iP
 	bWasConnected = true;
 	DB(100, "TryConnecting success");
 
-#if 0	
-	m_pReader = new EReader(m_pClient, &m_osSignal);
-	m_pReader->start();
-	DB(100, "started reader");
-#endif // 0
+	THINK_ABOUT("if you don't wait, the connection does not work.");
+	sleep(iWaitInSec);
+
 	return true;
       }
     }
@@ -130,7 +128,7 @@ void ClientConnection::SendRecieve(struct timeval &tTimeout)
 
   if (FD_ISSET(m_pClient->fd(), &readSet))
     {
-      TryRecieving(tTimeout);
+      TryRecieving();
     }
 
   if (FD_ISSET(m_pClient->fd(), &writeSet))
@@ -145,10 +143,10 @@ void ClientConnection::SendRecieve(struct timeval &tTimeout)
   DB(90, "ClientConnection::SendRecieve() end");
 }
 
-void ClientConnection::TryRecieving(struct timeval &tTimeout)
+// TryRecieving note: don't know how to check result or use timeout.
+void ClientConnection::TryRecieving()
 {
-  NYI("ClientConnection::TryRecieving() sleep for 2");
-  sleep(2);
+  DB(100, "TryRecieving()");
   m_pClient->onReceive();
 }
 
@@ -173,7 +171,7 @@ int ClientConnection::EnqueueGetOrderId(int iTimeoutInSec)
     pMessages->TrySending(m_pClient, tTimeout);
     DB(100, "TrySending returned true, trying to send more");
   }
-  TryRecieving(tTimeout);
+  TryRecieving();
 #endif // 0
   return -1;
 }
