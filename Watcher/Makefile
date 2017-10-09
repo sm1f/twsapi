@@ -1,12 +1,17 @@
+all:twsOrder twsWatcher
 
-SOURCES=$(wildcard *.cpp)
+BINS:=twsOrder twsWatcher
+
+SOURCES:=$(wildcard *.cpp)
+MAIN_SOURCE:=$(wildcard *Main.cpp)
+
+ALL_OBJECTS:=$(SOURCES:.cpp=.o)
+MAIN_OBJS:=$(MAIN_SOURCE:.cpp=.o)
+NON_MAIN_OBJECTS:=$(filter-out $(MAIN_OBJS), $(ALL_OBJECTS))
 
 
-
-OBJECTS=$(SOURCES:.cpp=.o)
 HEADERS=$(wildcard *.h)
 DEPS=$(SOURCES:.cpp=.d)
-BINS=twsWatcher
 
 CFLAGS+=-MMD
 #CXXFLAGS+= -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable \
@@ -16,20 +21,18 @@ CXXFLAGS+= -Wno-unused-parameter -Wall  -g -O2 -MMD -Wno-unused-variable -std=c+
         -I../Shared -DIB_USE_STD_STRING -Wextra \
 	-MD -MP
 
-# twsOrder: $(OBJECTS) $(HEADERS)
-#	/bin/bash ../libtool  --tag=CXX   --mode=link g++ -Wall -Wextra -g -O2   -o twsOrder $(OBJECTS) ../PosixSocketClient/libtwsapi.la 	
+twsWatcher: $(NON_MAIN_OBJECTS) $(HEADERS) twsWatcher-Main.o
+	/bin/bash ../libtool  --tag=CXX   --mode=link g++ -Wall -Wextra -g -O2   -o twsWatcher $(NON_MAIN_OBJECTS) twsWatcher-Main.o ../PosixSocketClient/libtwsapi.la 	
 
+twsOrder: $(NON_MAIN_OBJECTS) $(HEADERS) twsOrder-Main.o
+	/bin/bash ../libtool  --tag=CXX   --mode=link g++ -Wall -Wextra -g -O2   -o twsOrder $(NON_MAIN_OBJECTS) twsOrder-Main.o ../PosixSocketClient/libtwsapi.la 	
 
-twsWatcher: $(OBJECTS) $(HEADERS)
-	/bin/bash ../libtool  --tag=CXX   --mode=link g++ -Wall -Wextra -g -O2   -o $(BINS) $(OBJECTS) ../PosixSocketClient/libtwsapi.la 	
-#	/bin/bash ../libtool  --tag=CXX   --mode=link g++ -Wall -Wextra -g -O2 -Wno-unused-variable   -o $(BINS) $(OBJECTS) ../PosixSocketClient/libtwsapi.la 	
 
 # g++ -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wall -Wextra -g -O2 -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo -c -o TestPosixSocketClient-PosixTestClient.o `test -f 'PosixTestClient.cpp' || echo './'`PosixTestClient.cpp
-all: $(BINS)
 
 .PHONY: clean
 
 clean:
-	$(RM) $(OBJECTS) $(DEPS) $(BINS)
+	$(RM) $(ALL_OBJECTS) $(DEPS) $(BINS)
 
 -include $(DEPS)
