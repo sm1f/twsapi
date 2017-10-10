@@ -14,8 +14,6 @@
 #include "TwsCommonApp.h"
 #include "ETWrapper.h"
 
-class ClientConnection;
-
 class ETMessage {
  private:
   static int iMessageCount;

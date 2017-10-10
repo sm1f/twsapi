@@ -4,6 +4,7 @@
 #include <algorithm>
 
 #include "TwsCommonApp.h"
+#include "ClientConnection.h"
 
 using namespace std;
 using namespace TwsApp;
@@ -88,7 +89,9 @@ void CommandLineData::DB(int iLevel, MyString text)
 /** TwsCommonApp ****************************/
   
 TwsCommonApp::TwsCommonApp(int iArgCount, const char** asArgs)
-  :  iDebugAll(100), iDebugCommonApp(100), oCommandLineData(iArgCount, asArgs)
+  :  iDebugAll(100), iDebugCommonApp(100), oCommandLineData(iArgCount, asArgs),
+     sHost(""), iPort(7496)
+
 {
   AddCommonCommandLineArgs();
 }
@@ -114,3 +117,20 @@ void TwsCommonApp::AddCommonCommandLineArgs()
   NFI("TwsCommonApp::AddCommonCommandLineArgs()");
 }
 
+bool TwsCommonApp::TryConnecting()
+{
+  pConn = new ClientConnection();
+  int iWaitInSec = 3;
+  struct timeval tTimeout = { iWaitInSec, 0};
+
+  unsigned max_attempts = 10;
+  if (! pConn->TryConnecting(max_attempts, sHost, iPort, iWaitInSec))
+    {
+       cerr << "Error: TwsWatcher: connection failed" << endl << flush;
+    } else
+    {
+      return true;
+    }
+  
+  return false;
+}

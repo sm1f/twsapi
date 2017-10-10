@@ -14,6 +14,7 @@
 
 
 #include "TwsWatcher.h"
+#include "ClientConnection.h"
 
 //#include "PosixTestClient.h"
 
@@ -22,8 +23,7 @@ using namespace TwsApp;
 
 TwsWatcher::TwsWatcher(int iArgCount, const char** asArgs)
   : TwsCommonApp(iArgCount, asArgs),
-    iDebugWatcher(100),
-    sHost(""), iPort(7496)
+    iDebugWatcher(100)
 {
 }
 
@@ -40,16 +40,10 @@ int TwsWatcher::RunMain()
       cout << "Parse Args failed!!!" << endl;
       return -1;
     }
-  
-  ClientConnection* pConn = new ClientConnection();
-  int iWaitInSec = 3;
-  struct timeval tTimeout = { iWaitInSec, 0};
 
-  unsigned max_attempts = 10;
-  if (! pConn->TryConnecting(max_attempts, sHost, iPort, iWaitInSec))
+  if (! TryConnecting())
     {
-       cerr << "Error: TwsWatcher: connection failed" << endl << flush;
-       return 1;
+      cout << "Failed to connect!!" << endl;
     }
 
   DB(10, "Connected... request order id.");

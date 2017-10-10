@@ -1,6 +1,6 @@
-all:twsOrder twsWatcher
+all:twsTest twsOrder twsWatcher
 
-BINS:=twsOrder twsWatcher
+BINS:=twsTest twsOrder twsWatcher
 
 SOURCES:=$(wildcard *.cpp)
 MAIN_SOURCE:=$(wildcard *Main.cpp)
@@ -26,6 +26,10 @@ twsWatcher: $(NON_MAIN_OBJECTS) $(HEADERS) twsWatcher-Main.o
 
 twsOrder: $(NON_MAIN_OBJECTS) $(HEADERS) twsOrder-Main.o
 	/bin/bash ../libtool  --tag=CXX   --mode=link g++ -Wall -Wextra -g -O2   -o twsOrder $(NON_MAIN_OBJECTS) twsOrder-Main.o ../PosixSocketClient/libtwsapi.la 	
+
+twsTest: $(NON_MAIN_OBJECTS) $(HEADERS) twsTest-Main.o
+	/bin/bash ../libtool  --tag=CXX   --mode=link g++ -Wall -Wextra -g -O2   -o twsTest $(NON_MAIN_OBJECTS) twsTest-Main.o ../PosixSocketClient/libtwsapi.la 	
+
 
 
 # g++ -DHAVE_CONFIG_H -I. -I../.  -DDEBUG -D_GNU_SOURCE -I../PosixSocketClient/src -I../Shared -DIB_USE_STD_STRING -Wall -Wextra -g -O2 -MT TestPosixSocketClient-PosixTestClient.o -MD -MP -MF .deps/TestPosixSocketClient-PosixTestClient.Tpo -c -o TestPosixSocketClient-PosixTestClient.o `test -f 'PosixTestClient.cpp' || echo './'`PosixTestClient.cpp

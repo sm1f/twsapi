@@ -18,6 +18,8 @@
 //#include "PosixTestClient.h"
 
 
+namespace TwsApp {
+
 typedef enum 
   {
     RS_NONE,
@@ -67,7 +69,7 @@ class ClientConnection : public IB::ETWrapper {
 };
 
 
-  //};
+}; // namespace
 
 #endif //  __CLIENT_CONNECTION__
 

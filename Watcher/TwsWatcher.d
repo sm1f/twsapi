@@ -1,6 +1,6 @@
-TwsWatcher.o: TwsWatcher.cpp TwsWatcher.h ClientConnection.h \
- TwsCommonApp.h ETWrapper.h ../Shared/TagValue.h ../Shared/shared_ptr.h \
- ../Shared/IBString.h ../Shared/Execution.h \
+TwsWatcher.o: TwsWatcher.cpp TwsWatcher.h TwsCommonApp.h \
+ ClientConnection.h ETWrapper.h ../Shared/TagValue.h \
+ ../Shared/shared_ptr.h ../Shared/IBString.h ../Shared/Execution.h \
  ../Shared/ScannerSubscription.h \
  ../PosixSocketClient/src/EPosixClientSocket.h \
  ../Shared/EClientSocketBase.h ../Shared/EClient.h ../Shared/CommonDefs.h \
@@ -9,9 +9,9 @@ TwsWatcher.o: TwsWatcher.cpp TwsWatcher.h ClientConnection.h \
 
 TwsWatcher.h:
 
-ClientConnection.h:
-
 TwsCommonApp.h:
+
+ClientConnection.h:
 
 ETWrapper.h:
 

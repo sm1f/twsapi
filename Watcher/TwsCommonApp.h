@@ -25,6 +25,8 @@ typedef const char* MyString;
 
 namespace TwsApp {
 
+class ClientConnection;
+  
 class CommandLineDatum
 {
  private:
@@ -70,12 +72,14 @@ class CommandLineData
 
 
 // int debug vars: higher more messages 0 should be none
- 
+
 class TwsCommonApp
 {
  protected:
   int iDebugAll;
   int iDebugCommonApp;
+
+  ClientConnection* pConn;
  private:
   CommandLineData oCommandLineData;
 
@@ -86,6 +90,13 @@ class TwsCommonApp
   virtual int RunMain();
   virtual bool ParseArgs();
   virtual void AddCommonCommandLineArgs();
+
+
+ protected:
+  MyString sHost;
+  int iPort;
+  virtual bool TryConnecting();
+
 };
 
 }

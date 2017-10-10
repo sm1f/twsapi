@@ -5,7 +5,6 @@
 #ifndef __TWS_WATCHER_H__
 #define  __TWS_WATCHER_H__
 
-#include "ClientConnection.h"
 #include "TwsCommonApp.h"
 
 
@@ -15,8 +14,6 @@ class TwsWatcher : public TwsCommonApp
 {
  protected:
   int iDebugWatcher;
-  MyString sHost;
-  int iPort;
   
  public:
   TwsWatcher(int iArgCount, const char** asArgs);
